@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
     print(text);
     double euro = double.parse(text);
     realController.text = (euro * this.euro).toStringAsFixed(2);
-    dolarController.text = (dolar * this.euro / dolar).toStringAsFixed(2);
+    dolarController.text = (euro * this.euro / dolar).toStringAsFixed(2);
   }
 
   @override
