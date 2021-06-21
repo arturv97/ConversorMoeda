@@ -48,15 +48,30 @@ class _HomeState extends State<Home> {
   double euro;
   double libra;
 
+  void _clearAll() {
+    realController.text = "";
+    dolarController.text = "";
+    euroController.text = "";
+    libraController.text = "";
+  }
+
   void _realChanged(String text) {
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     print(text);
     double real = double.parse(text);
-    dolarController.text = (real/dolar).toStringAsFixed(2);
-    euroController.text = (real/euro).toStringAsFixed(2);
-    libraController.text = (real/libra).toStringAsFixed(2);
+    dolarController.text = (real / dolar).toStringAsFixed(2);
+    euroController.text = (real / euro).toStringAsFixed(2);
+    libraController.text = (real / libra).toStringAsFixed(2);
   }
 
   void _dolarChanged(String text) {
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     print(text);
     double dolar = double.parse(text);
     realController.text = (dolar * this.dolar).toStringAsFixed(2);
@@ -65,6 +80,10 @@ class _HomeState extends State<Home> {
   }
 
   void _euroChanged(String text) {
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     print(text);
     double euro = double.parse(text);
     realController.text = (euro * this.euro).toStringAsFixed(2);
@@ -73,6 +92,10 @@ class _HomeState extends State<Home> {
   }
 
   void _libraChanged(String text) {
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
     print(text);
     double libra = double.parse(text);
     realController.text = (libra * this.libra).toStringAsFixed(2);
@@ -110,9 +133,11 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.center,
                     ));
                   else {
-                    dolar = snapshot.data["results"]["currencies"]["USD"]["buy"];
+                    dolar =
+                        snapshot.data["results"]["currencies"]["USD"]["buy"];
                     euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
-                    libra = snapshot.data["results"]["currencies"]["GBP"]["buy"];
+                    libra =
+                        snapshot.data["results"]["currencies"]["GBP"]["buy"];
                     return SingleChildScrollView(
                       padding: EdgeInsets.all(10.0),
                       child: Column(
@@ -123,13 +148,17 @@ class _HomeState extends State<Home> {
                             size: 150.0,
                             color: Colors.amber,
                           ),
-                          buildTextField("Reais", "R\$", realController, _realChanged),
+                          buildTextField(
+                              "Reais", "R\$", realController, _realChanged),
                           Divider(),
-                          buildTextField("Dólares", "US\$", dolarController, _dolarChanged),
+                          buildTextField("Dólares", "US\$", dolarController,
+                              _dolarChanged),
                           Divider(),
-                          buildTextField("Euros", "€", euroController, _euroChanged),
+                          buildTextField(
+                              "Euros", "€", euroController, _euroChanged),
                           Divider(),
-                          buildTextField("Libra", "£", libraController, _libraChanged),
+                          buildTextField(
+                              "Libras", "£", libraController, _libraChanged),
                         ],
                       ),
                     );
