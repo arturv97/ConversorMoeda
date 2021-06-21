@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
   }
 
   void _realChanged(String text) {
-    if(text.isEmpty) {
+    if (text.isEmpty) {
       _clearAll();
       return;
     }
@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
   }
 
   void _dolarChanged(String text) {
-    if(text.isEmpty) {
+    if (text.isEmpty) {
       _clearAll();
       return;
     }
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
   }
 
   void _euroChanged(String text) {
-    if(text.isEmpty) {
+    if (text.isEmpty) {
       _clearAll();
       return;
     }
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
   }
 
   void _libraChanged(String text) {
-    if(text.isEmpty) {
+    if (text.isEmpty) {
       _clearAll();
       return;
     }
@@ -167,6 +167,7 @@ class _HomeState extends State<Home> {
             }));
   }
 }
+
 Widget buildTextField(
     String label, String prefix, TextEditingController moeda, Function f) {
   return TextField(
